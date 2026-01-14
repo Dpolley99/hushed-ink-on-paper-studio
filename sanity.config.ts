@@ -10,7 +10,22 @@ export default defineConfig({
   projectId: 'f6zshzn1',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool()],
+  plugins: [
+    structureTool({
+      structure: (S: any) =>
+        S.list()
+          .title('Content')
+          .items([
+            S.documentTypeListItem('post')
+              .title('Blog Posts')
+              .child(
+                S.documentTypeList('post')
+                  .defaultOrdering([{field: 'publishedAt', direction: 'desc'}])
+              ),
+          ]),
+    }),
+    visionTool(),
+  ],
 
   schema: {
     types: schemaTypes,
