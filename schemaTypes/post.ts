@@ -37,7 +37,6 @@ export default defineType({
           type: 'block',
           styles: [
             { title: 'Normal', value: 'normal' },
-            { title: 'H1', value: 'h1' },
             { title: 'H2', value: 'h2' },
             { title: 'H3', value: 'h3' },
             { title: 'Quote', value: 'blockquote' },
@@ -46,7 +45,6 @@ export default defineType({
             decorators: [
               { title: 'Strong', value: 'strong' },
               { title: 'Emphasis', value: 'em' },
-              { title: 'Underline', value: 'underline' },
             ],
           },
         },
@@ -66,6 +64,13 @@ export default defineType({
       options: {
         layout: 'tags',
       },
+    }),
+    defineField({
+      name: 'featured',
+      title: 'Featured',
+      type: 'boolean',
+      description: 'Show this post on the home page',
+      initialValue: false,
     }),
   ],
   preview: {
